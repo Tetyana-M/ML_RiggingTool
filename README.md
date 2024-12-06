@@ -5,19 +5,14 @@ Install torch with <code>mayapy</code>, this specific version works with my Maya
 
 <code>LOCAL_MAYA</code> - your local path to python modules.
 
-**Shelf button code**
-
+**Shelf button code:**
 <code>
-import importlib
-
-from ML_RiggingTool import ML_RiggingTool_UI
-from ML_RiggingTool import ML_RiggingTool_GenerateData
-from ML_RiggingTool import ML_RiggingTool_TrainModel
-
-importlib.reload(ML_RiggingTool_UI)
-importlib.reload(ML_RiggingTool_GenerateData)
-importlib.reload(ML_RiggingTool_TrainModel)
-
-
+import importlib<br>
+from ML_RiggingTool import ML_RiggingTool_UI<br>
+from ML_RiggingTool import ML_RiggingTool_GenerateData<br>
+from ML_RiggingTool import ML_RiggingTool_TrainModel<br><br>
+importlib.reload(ML_RiggingTool_UI)<br>
+importlib.reload(ML_RiggingTool_GenerateData)<br>
+importlib.reload(ML_RiggingTool_TrainModel)<br><br>
 ML_RiggingTool_UI.main()
 </code>
