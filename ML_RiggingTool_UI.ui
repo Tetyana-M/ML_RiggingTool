@@ -48,7 +48,11 @@
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="1" column="1">
-      <widget class="QLineEdit" name="joint1_rX_min_edit"/>
+      <widget class="QLineEdit" name="joint1_rX_min_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_3">
@@ -58,16 +62,32 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="joint1_rZ_min_edit"/>
+      <widget class="QLineEdit" name="joint1_rZ_min_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="2">
-      <widget class="QLineEdit" name="joint1_rZ_max_edit"/>
+      <widget class="QLineEdit" name="joint1_rZ_max_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QLineEdit" name="joint1_rY_max_edit"/>
+      <widget class="QLineEdit" name="joint1_rY_max_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QLineEdit" name="joint1_rX_max_edit"/>
+      <widget class="QLineEdit" name="joint1_rX_max_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -77,7 +97,11 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="joint1_rY_min_edit"/>
+      <widget class="QLineEdit" name="joint1_rY_min_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_4">
@@ -139,7 +163,11 @@
     </property>
     <layout class="QGridLayout" name="gridLayout_3">
      <item row="1" column="1">
-      <widget class="QLineEdit" name="joint2_rX_min_edit"/>
+      <widget class="QLineEdit" name="joint2_rX_min_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_7">
@@ -149,16 +177,32 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="joint2_rZ_min_edit"/>
+      <widget class="QLineEdit" name="joint2_rZ_min_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="2">
-      <widget class="QLineEdit" name="joint2_rZ_max_edit"/>
+      <widget class="QLineEdit" name="joint2_rZ_max_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QLineEdit" name="joint2_rY_max_edit"/>
+      <widget class="QLineEdit" name="joint2_rY_max_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QLineEdit" name="joint2_rX_max_edit"/>
+      <widget class="QLineEdit" name="joint2_rX_max_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_8">
@@ -168,7 +212,11 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="joint2_rY_min_edit"/>
+      <widget class="QLineEdit" name="joint2_rY_min_edit">
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_9">
