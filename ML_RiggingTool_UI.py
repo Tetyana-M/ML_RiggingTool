@@ -10,6 +10,9 @@ from ML_RiggingTool import ML_RiggingTool_TrainModel as trainModel
 
 
 class ML_RiggingTool_UI(QtWidgets.QMainWindow):
+    """
+    This class creates UI for the ML Rigging Tool.
+    """
     WIN_NAME = 'ML_RiggingTool'
     LOCAL_PATH = os.environ.get('LOCAL_MAYA')
     UI_PATH = os.path.realpath(f'{LOCAL_PATH}/ML_RiggingTool/ML_RiggingTool_UI.ui')
@@ -74,7 +77,7 @@ class ML_RiggingTool_UI(QtWidgets.QMainWindow):
         joint2Max = [float(self.MainWindowUI.joint2_rX_max_edit.text()),
                      float(self.MainWindowUI.joint2_rY_max_edit.text()),
                      float(self.MainWindowUI.joint2_rZ_max_edit.text())]
-        #TEMP
+        # TEMPORARY HERE
         joint1Min = [-100.0, 0.0, -20.0]
         joint1Max = [60.0, 0.0, 95.0]
         joint2Min = [0.0, 0.0, 0.0]
@@ -86,9 +89,9 @@ class ML_RiggingTool_UI(QtWidgets.QMainWindow):
         trainModel.ML_RiggingTool_TrainModel(theta_combinations, end_xyz)
         
 def main():
-        winName = ML_RiggingTool_UI.WIN_NAME
-        if cmds.window(winName, query=True, exists=True):
-             cmds.deleteUI(winName)
+    winName = ML_RiggingTool_UI.WIN_NAME
+    if cmds.window(winName, query=True, exists=True):
+            cmds.deleteUI(winName)
 
-        ML_RiggingTool_UI()
+    ML_RiggingTool_UI()
         
