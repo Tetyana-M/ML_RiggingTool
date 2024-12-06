@@ -1,16 +1,22 @@
 import numpy as np
 import maya.cmds as cmds
-import os
 
 class ML_RiggingTool_GenerateData():
     NUM_SAMPLES = 10
-    TOTAL_COMBINATIONS = NUM_SAMPLES ** 6
-    LOCAL_PATH = os.environ.get('LOCAL_MAYA')
     
     def __init__(self):
         pass
-        
+    
     def generateThetaCombinations(self, joint1Min, joint1Max, joint2Min, joint2Max):
+        """ 
+        Generate combinations of X, Y, and Z rotations for joint 1 and joint2 within
+        the min and max limits.
+        
+        @param joint1Min, joint1Max, joint2Min, joint2Max: [float, float, float] - min and max 
+            X, Y, and Z rotation values for each joint respectively.
+        @return theta_combinations: numpy array of (n, 6) shape where n is the number of 
+            combinations and 6 is [joint1_rx, joint1_ry, joint1_rz, joint2_rx, joint2_ry, joint2_rz]
+        """
         # Generate samples.
         samples = {'theta1_X': np.random.uniform(low=joint1Min[0], high=joint1Max[0], size=self.NUM_SAMPLES),
                    'theta1_Y': np.random.uniform(low=joint1Min[1], high=joint1Max[1], size=self.NUM_SAMPLES),
@@ -18,7 +24,7 @@ class ML_RiggingTool_GenerateData():
                    'theta2_X': np.random.uniform(low=joint2Min[0], high=joint2Max[0], size=self.NUM_SAMPLES),
                    'theta2_Y': np.random.uniform(low=joint2Min[1], high=joint2Max[1], size=self.NUM_SAMPLES),
                    'theta2_Z': np.random.uniform(low=joint2Min[2], high=joint2Max[2], size=self.NUM_SAMPLES)}
-        # Store all theta combinations.
+        # Generate theta combinations.
         theta_combinations = np.array([[samples['theta1_X'][i], 
                                          samples['theta1_Y'][j], 
                                          samples['theta1_Z'][k],
@@ -31,12 +37,21 @@ class ML_RiggingTool_GenerateData():
                                          for l in range(self.NUM_SAMPLES)
                                          for m in range(self.NUM_SAMPLES)
                                          for n in range(self.NUM_SAMPLES)])
+        
         theta_combinations = np.unique(theta_combinations, axis=0)
         
         return theta_combinations
         
     def generateEndPositions(self, joints, theta_combinations):
+        """
+        Get end effector positions for each combination of thetas.
 
+        @param joints: string array of size 3 - the three joint names.
+        @param theta_combinations: numpy array, shape (n,6) - X, Y, and Z rotation values for
+            joint1 and joint2 formatted [joint1_rx, joint1_ry, joint1_rz, joint2_rx, joint2_ry, joint2_rz]
+        @return end_xyz: numpy array of shape (n, 3) where n is the number theta combinations and 
+            3 is the X, Y, and Z world space coordinates of the end effector.
+        """
         # Generate xyz.
         end_xyz = np.empty((len(theta_combinations), 3))
         for index in range(len(theta_combinations)):
@@ -46,36 +61,8 @@ class ML_RiggingTool_GenerateData():
             cmds.setAttr(f'{joints[1]}.rx', theta_combinations[index][3])
             cmds.setAttr(f'{joints[1]}.ry', theta_combinations[index][4])
             cmds.setAttr(f'{joints[1]}.rz', theta_combinations[index][5])
-            pos = cmds.xform(joints[2], q=1, t=1, ws=1)
+            pos = cmds.xform(joints[2], q=1, t=1, ws=1) # world space
             end_xyz[index] = pos
         
         return end_xyz
         
-"""
-        # Specify the target directory and filename.
-        directory = r'C:\Fanshawe\6147\project\data'
-        theta_filename = 'theta_combinations.json'
-        theta_file_path = os.path.join(directory, theta_filename)
-        # Make sure the directory exists, create if it does not.
-        os.makedirs(directory, exist_ok=True)
-
-
-
-
-# Write theta to file.    
-with open(theta_file_path, 'w') as json_file:
-    json.dump(theta_combinationss, json_file, indent=4)
-
-# Write xyz to file.    
-xyz_filename = 'xyz_coordinates.json'
-xyz_file_path = os.path.join(directory, xyz_filename)
-with open(xyz_file_path, 'w') as json_file:
-    json.dump(locator_xyz.tolist(), json_file, indent=4)
-
-# Visualize.
-
-# Create locator for each xyz.
-for point in locator_xyz:
-    #print(point)
-    cmds.spaceLocator(p=(point[0], point[1], point[2]))
-"""
